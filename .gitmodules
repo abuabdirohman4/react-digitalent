@@ -1,0 +1,12 @@
+[submodule "challenge-git"]
+	path = challenge-git
+	url = git@github.com:abuabdirohman4/challenge-git.git
+	branch = dev
+[submodule "challenge-promises-abuabdirohman4"]
+	path = challenge-promises-abuabdirohman4
+	url = git@github.com:dts-kominfo-rea4a/challenge-promises-abuabdirohman4.git
+	branch = main
+[submodule "challenge-dom-abuabdirohman4"]
+	path = challenge-dom-abuabdirohman4
+	url = git@github.com:dts-kominfo-rea4a/challenge-dom-abuabdirohman4.git
+	branch = main
