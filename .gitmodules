@@ -10,3 +10,7 @@
 	path = challenge-dom-abuabdirohman4
 	url = git@github.com:dts-kominfo-rea4a/challenge-dom-abuabdirohman4.git
 	branch = main
+[submodule "challenge-react-with-mui-abuabdirohman4"]
+	path = challenge-react-with-mui-abuabdirohman4
+	url = git@github.com:dts-kominfo-rea4a/challenge-react-with-mui-abuabdirohman4.git
+	branch = main
