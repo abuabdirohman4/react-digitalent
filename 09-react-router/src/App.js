@@ -15,9 +15,11 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
         <Route path="formulir" element={<CustomForm />} />
-        <Route path="animals/:animalId" element={<AnimalDetailPage />} />
-        {/* Misalnya di sini kita menambah satu routes lagi */}
-        <Route path="animals" element={<AnimalListPage />} />
+        {/* Misalnya di sini kita mengubah untuk jadi nested */}
+        <Route path="animals" element={<AnimalListPage />}>
+          {/* Jangan lupa kata kata prefixnya dibuang */}
+          <Route path=":animalId" element={<AnimalDetailPage />} />
+        </Route>
       </Routes>
     </div>
   );
