@@ -1,44 +1,57 @@
-import React, { useState } from 'react';
-import './style.css';
-
-// Import Component
-import FirstComponent from './components/FirstComponent.jsx';
-import SecondComponent from './components/SecondComponent.jsx';
+import React from "react";
+import "./style.css";
+// Perhatikan di sini kita import Routes, Route, Link
+// Routes = Seluruh Rute yang bisa didefinisikan
+// Route = satuan rute yang didefinisikan
+//    (ketika pathnya ke mana, akan memanggil component apa)
+// Link = anggap seperti anchor (<a></a>), namun untuk Router
+import { Routes, Route, Link } from "react-router-dom";
 
 export default function App() {
-  // position bila 'A' = Component FirstComponent
-  // position bila 'B' = Component SecondComponent
-
-  // by default di sini kita menggunakan Component Pertama
-  const [position, setPosition] = useState('A');
-
-  // Di sini kita membuat sebuah fungsi yang menerima event dan
-  // posisi yang ingin dituju
-  const linkOnClickHandler = (event, pos) => {
-    console.log(event);
-    event.preventDefault();
-    setPosition(pos);
-  };
-
   return (
-    <div>
-      <h1>React Navigation - Intro</h1>
-      {/* Link */}
-      <span style={{ display: 'flex', gap: '0.5em' }}>
-        {/* 
-          Perhatikan di sini kita menggunakan function sendiri di dalam
-          onClick agar bisa melempar data yang diinginkan 'A' / 'B'
-         */}
-        <a href="#" onClick={(event) => linkOnClickHandler(event, 'A')}>
-          Component A
-        </a>
-        <a href="#" onClick={(event) => linkOnClickHandler(event, 'B')}>
-          Component B
-        </a>
-      </span>
-
-      {/* Conditional Rendering */}
-      {position === 'A' ? <FirstComponent /> : <SecondComponent />}
+    <div className="App">
+      <h1>Salam dari React Router!</h1>
+      {/* Definisikan Routes di sini */}
+      <Routes>
+        {/* Di sini kita mendefinisikan path / akan memanggil Component Home */}
+        <Route path="/" element={<Home />} />
+        {/* Di sini kita mendefinisikan path /about akan memanggil Component About */}
+        <Route path="about" element={<About />} />
+      </Routes>
     </div>
+  );
+}
+
+// Sangat tidak disarankan membuat multi component di App.js
+// Hanya untuk pembelajaran belaka yah !
+function Home() {
+  return (
+    <>
+      <main>
+        <h2>Halo dari Homepage</h2>
+        <p>Mari belajar Routing, yuk yuk yuk !</p>
+      </main>
+      <nav>
+        {/* Ini adalah anchor nya untuk Route */}
+        <Link to="/about">About</Link>
+      </nav>
+    </>
+  );
+}
+
+// Sangat tidak disarankan membuat multi component di App.js
+// Hanya untuk pembelajaran belaka yah !
+function About() {
+  return (
+    <>
+      <main>
+        <h2>Siapakah pembuat halaman ini?</h2>
+        <p>Duh, ga usah diragukan lagi, orang ga jelas !</p>
+      </main>
+      <nav>
+        {/* Ini adalah anchor nya untuk Route */}
+        <Link to="/">Home</Link>
+      </nav>
+    </>
   );
 }
