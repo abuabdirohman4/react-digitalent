@@ -1,25 +1,21 @@
 import React from "react";
-import "./style.css";
-// Perhatikan di sini kita import Routes, Route, Link
-// Routes = Seluruh Rute yang bisa didefinisikan
-// Route = satuan rute yang didefinisikan
-//    (ketika pathnya ke mana, akan memanggil component apa)
-// Link = anggap seperti anchor (<a></a>), namun untuk Router
 import { Routes, Route, Link } from "react-router-dom";
 import CustomForm from "./components/CustomForm";
+import AnimalDetailPage from "./containers/AnimalDetailPage";
+
+import "./style.css";
 
 export default function App() {
   return (
     <div className="App">
       <h1>Salam dari React Router!</h1>
-      {/* Definisikan Routes di sini */}
+
       <Routes>
-        {/* Di sini kita mendefinisikan path / akan memanggil Component Home */}
         <Route path="/" element={<Home />} />
-        {/* Di sini kita mendefinisikan path /about akan memanggil Component About */}
         <Route path="about" element={<About />} />
-        {/* Misalnya di sini kita menggunakan satu route lagi */}
         <Route path="formulir" element={<CustomForm />} />
+        {/* Misalnya di sini kita menambah satu routes lagi */}
+        <Route path="animals/:animalId" element={<AnimalDetailPage />} />
       </Routes>
     </div>
   );
