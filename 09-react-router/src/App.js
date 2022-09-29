@@ -6,6 +6,7 @@ import "./style.css";
 //    (ketika pathnya ke mana, akan memanggil component apa)
 // Link = anggap seperti anchor (<a></a>), namun untuk Router
 import { Routes, Route, Link } from "react-router-dom";
+import CustomForm from "./components/CustomForm";
 
 export default function App() {
   return (
@@ -17,6 +18,8 @@ export default function App() {
         <Route path="/" element={<Home />} />
         {/* Di sini kita mendefinisikan path /about akan memanggil Component About */}
         <Route path="about" element={<About />} />
+        {/* Misalnya di sini kita menggunakan satu route lagi */}
+        <Route path="formulir" element={<CustomForm />} />
       </Routes>
     </div>
   );
@@ -34,6 +37,10 @@ function Home() {
       <nav>
         {/* Ini adalah anchor nya untuk Route */}
         <Link to="/about">About</Link>
+        {/* Kita tambahkan untuk ke Form */}
+        <Link style={{ marginLeft: 10 }} to="/formulir">
+          Form
+        </Link>
       </nav>
     </>
   );
@@ -51,6 +58,9 @@ function About() {
       <nav>
         {/* Ini adalah anchor nya untuk Route */}
         <Link to="/">Home</Link>
+        <Link style={{ marginLeft: 10 }} to="/formulir">
+          Form
+        </Link>
       </nav>
     </>
   );
