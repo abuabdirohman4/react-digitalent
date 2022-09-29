@@ -2,6 +2,7 @@ import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import CustomForm from "./components/CustomForm";
 import AnimalDetailPage from "./containers/AnimalDetailPage";
+import AnimalListPage from "./containers/AnimalListPage";
 
 import "./style.css";
 
@@ -14,8 +15,9 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
         <Route path="formulir" element={<CustomForm />} />
-        {/* Misalnya di sini kita menambah satu routes lagi */}
         <Route path="animals/:animalId" element={<AnimalDetailPage />} />
+        {/* Misalnya di sini kita menambah satu routes lagi */}
+        <Route path="animals" element={<AnimalListPage />} />
       </Routes>
     </div>
   );
