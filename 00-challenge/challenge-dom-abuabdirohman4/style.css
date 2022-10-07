@@ -1,0 +1,42 @@
+body {
+    background-color: #968DC8;
+}
+
+#app {
+    position: relative;
+    width: 23rem;
+    min-height: 50vh;
+    margin: 5rem auto auto auto;
+    background-color: #fffefe;
+    background-clip: border-box;
+    padding: .1rem 3rem;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 0.75rem;
+}
+
+#todo-title {
+    text-align: center;
+    background-color: #69F9CB;
+    width: 9rem;
+    margin: 2rem auto;
+}
+
+#todo-subtitle {
+    text-align: center;
+    margin-bottom: .5rem;
+}
+
+input {
+    height: 2rem;
+    width: 80%;
+}
+
+ul {
+    padding-left: 0;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+}
+
+ul li {
+    margin-top: 1rem;
+}
