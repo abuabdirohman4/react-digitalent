@@ -1,0 +1,3 @@
+[submodule "06-ui-framework/react-education-ui-framework"]
+	path = 06-ui-framework/react-education-ui-framework
+	url = git@github.com:abuabdirohman4/react-education-ui-framework.git
