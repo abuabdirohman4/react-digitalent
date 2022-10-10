@@ -12,16 +12,20 @@ import CounterReducerContainer from "./containers/CounterReducerContainer";
 
 // kita akan membuat store dari reduxnya
 // fungsi dari redux namanya adalah "createStore"
-import { legacy_createStore as createStore } from "redux";
+// import { legacy_createStore as createStore } from "redux";
 // reducernya disini :
-import { rootReducer, initialValue } from "./reducers/rootReducer";
+// import { rootReducer, initialValue } from "./reducers/rootReducer";
 
 import { Provider } from "react-redux";
 import CounterReduxContainer from "./containers/CounterReduxContainer";
 // context
 
 // declare storenya disii :
-const store = createStore(rootReducer, initialValue);
+// const store = createStore(rootReducer, initialValue);
+
+// Redux Toolkit
+// import store dari app/store
+import { store } from "./app/store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

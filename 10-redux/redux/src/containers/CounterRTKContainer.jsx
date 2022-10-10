@@ -15,11 +15,7 @@ import {
   decrementSpec,
 } from "../features/counter/sliceCounter";
 
-const CounterReduxContainer = () => {
-  // Harus memilih si state punya property bernama user & counter
-  // const user = useSelector((state) => state.user);
-  // const counter = useSelector((state) => state.counter);
-
+const CounterRTKContainer = () => {
   // Redux Toolkit
   const user = useSelector(selectUser);
   const counter = useSelector(selectCounter);
@@ -30,24 +26,14 @@ const CounterReduxContainer = () => {
   const dispatcher = useDispatch();
 
   const buttonDecrementOnClickHandler = () => {
-    // dispatcher({
-    //   type: "decrement",
-    // });
-
     // Redux Toolkit
     // dispatcher (namaActions())
     dispatcher(decrement());
   };
   const buttonIncrementOnClickHandler = () => {
-    // dispatcher({
-    //   type: "increment",
-    // });
     dispatcher(increment());
   };
   const buttonResetOnClickHandler = () => {
-    // dispatcher({
-    //   type: "reset",
-    // });
     dispatcher(reset());
   };
 
@@ -57,21 +43,11 @@ const CounterReduxContainer = () => {
   };
 
   const buttonDecrementByAmountOnClickHandler = () => {
-    // dispatcher({
-    //   type: "decrementSpec",
-    //   amount: +currAmount,
-    //   // Konversi to number -> Number() parseInt() or +
-    // });
-    //
     // decremetnSpec(action.payload)
     dispatcher(decrementSpec(+currAmount));
   };
 
   const buttonIncrementByAmountOnClickHandler = () => {
-    // dispatcher({
-    //   type: "incrementSpec",
-    //   amount: +currAmount,
-    // });
     dispatcher(incrementSpec(+currAmount));
   };
 
@@ -158,4 +134,4 @@ const CounterReduxContainer = () => {
   );
 };
 
-export default CounterReduxContainer;
+export default CounterRTKContainer;
