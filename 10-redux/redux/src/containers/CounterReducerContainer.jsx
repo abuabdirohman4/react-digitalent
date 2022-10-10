@@ -6,14 +6,18 @@ import { Box, Button, TextField, Typography } from "@mui/material";
 // import reducernya di sini
 import {
   counterInitialValue,
-  CounterReducer,
-} from "../reducers/CounterReducer.js";
+  counterReducer,
+} from "../reducers/counterReducer.js";
+
+// import { useSelector } from "react-redux";
 
 const CounterReducerContainer = () => {
   const [counter, dispatchCounter] = useReducer(
-    CounterReducer,
+    counterReducer,
     counterInitialValue
   );
+
+  // const counterFromStore = useSelector((state) => state.counter);
 
   const buttonDecrementOnClickHandler = () => {
     dispatchCounter({
@@ -25,7 +29,7 @@ const CounterReducerContainer = () => {
     dispatchCounter({
       // tipeAksi: " increment",
       tipeAksi: "incrementSpec",
-      amount: 100
+      amount: 100,
     });
   };
 
@@ -56,6 +60,7 @@ const CounterReducerContainer = () => {
             label="Current Counter"
             // defaultValue="0"
             value={counter}
+            // value={counterFromStore}
             size="small"
           />
         </Box>
@@ -80,7 +85,7 @@ const CounterReducerContainer = () => {
             color="success"
             onClick={buttonIncrementOnClickHandler}
           >
-            +1
+            +100
           </Button>
         </Box>
       </Box>
