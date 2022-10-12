@@ -1,32 +1,46 @@
+import axios from "axios";
+
 // slice / reducer via redux toolkit
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 const initialStateForCounter = {
   user: "Abu",
   counter: 100000,
 };
 
-// bikin slicenya
+// Membuat AsyncThunk
+// nantinya variable ini akan di gunakan di tempat lain,
+// sehingga harus di export
+export const userAsync = createAsyncThunk(
+  // parameter pertamanya adalah si prefix
+  // prefix ini nantiny akan membuat beberapa (3) "konstanta string"
+  // "prefix"/pending
+  // "prefix"/fulfilled
+  // "prefix"/rejected
+  // (Kayak apa ini? Promise)
+
+  // Nama Slice/Nama Fungsinya
+  "counterRTK/comotDataUser",
+  // Payload (function handler), sebuah fungsi sifatnya async
+  // kita bikin fungsi untuk comot datanya
+  async (id) => {
+    // kita akan membautkan fungsi untuk comot datanya tadi
+    // Hasilnya akan mengembalikan data kembaliannya
+    const { data } = await axios.get(`https://reqres.in/api/users/${id}`);
+
+    // dalam function handlernya ini
+    // HARUS ada Return
+
+    // Dalam case ini, kita akan mengembalikand ata
+    return data.data;
+  }
+);
+
 const counterRTKSlice = createSlice({
-  // berikan nama untuk slicenya
   name: "counterRTK",
-  // intial statenya apa sih untuk si "slice" ini
   initialState: initialStateForCounter,
-  //   definisikan "action" nya bisa ada apa saja
   reducers: {
-    // increment, decrement, reset, incrementSpec, decrementSpec
-    // fungsi minimal 1 parameter (state)
-    // maksimal 2 parameter (state, action -> payload(data tambahan))
     increment(state) {
-      // kita berikan hasil return nya
-      // state harus immutable?
-
-      // TAPI itu kalau kita menggunkaan reducer standard
-      // jadi di dalam redux toolkit, dibalik layar, semua state itu sudah dibungkus
-      // dengan suatu hal yang bernama "immer"
-
-      // kita bisa menuliskan perubahsan state, SEOLAH OLAH seperti statenya itu MUTABLE !
-      // ARTINYA KITA BOLEH LANGSUNG mengassign /mengsamadengankan !
       state.counter += 1;
     },
     decrement(state) {
@@ -41,6 +55,24 @@ const counterRTKSlice = createSlice({
     decrementSpec(state, action) {
       state.counter -= action.payload;
     },
+  },
+  // extrareducers -> reducers yang sifatnya adalah dari middlewarenya -> AsyncThunk
+  // fungsi menerima sebuah parameter
+  // namanya "builder"
+  extraReducers: (builder) => {
+    // kita disini akan menggunakan si builder untuk membaut seluruh case
+    // dari promise yang  bisa ternjadi
+    builder
+      // builder punya fungsi bernama addCase
+      .addCase(userAsync.pending, () => {
+        console.log("lagi nunggu data user nih");
+      })
+      .addCase(userAsync.fulfilled, (state, action) => {
+        state.user = action.payload;
+      })
+      .addCase(userAsync.rejected, () => {
+        console.log("gagal comot data nihh");
+      });
   },
 });
 

@@ -1,7 +1,7 @@
 import React from "react";
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Avatar, Box, Button, TextField, Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // import selector
 import { selectUser, selectCounter } from "../features/counter/sliceCounter";
@@ -13,12 +13,16 @@ import {
   reset,
   incrementSpec,
   decrementSpec,
+  // import async
+  userAsync,
 } from "../features/counter/sliceCounter";
 
 const CounterRTKContainer = () => {
   // Redux Toolkit
   const user = useSelector(selectUser);
   const counter = useSelector(selectCounter);
+
+  // console.log(user)
 
   const [currAmount, setCurrAmount] = useState(0);
 
@@ -51,6 +55,15 @@ const CounterRTKContainer = () => {
     dispatcher(incrementSpec(+currAmount));
   };
 
+  useEffect(
+    // fn
+    () => {
+      dispatcher(userAsync(2))
+    },
+    // depsList
+    [dispatcher]
+  );
+
   return (
     <>
       <Box
@@ -66,8 +79,15 @@ const CounterRTKContainer = () => {
           React Redux
         </Typography>
 
+        <Avatar
+          // src="https:placekitten.com/200"
+          src={user.avatar}
+          alt="Avatar"
+          sx={{ width: 64, height: 64 }}
+        />
+
         <Typography variant="body1" component="div">
-          Nama Orang: {user}
+          Nama Orang: {user.first_name}
         </Typography>
 
         <Box sx={{ display: "flex", gap: 2 }}>

@@ -5,9 +5,9 @@ import { Box, Button, TextField, Typography } from "@mui/material";
 
 // import reducernya di sini
 import {
-  counterInitialValue,
   counterReducer,
-} from "../reducers/counterReducer.js";
+  counterInitialValue,
+} from "../reducers/CounterReducer";
 
 // import { useSelector } from "react-redux";
 

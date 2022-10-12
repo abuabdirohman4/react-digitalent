@@ -17,7 +17,8 @@ import CounterReducerContainer from "./containers/CounterReducerContainer";
 // import { rootReducer, initialValue } from "./reducers/rootReducer";
 
 import { Provider } from "react-redux";
-import CounterReduxContainer from "./containers/CounterReduxContainer";
+// import CounterReduxContainer from "./containers/CounterReduxContainer";
+import CounterRTKContainer from "./containers/CounterRTKContainer";
 // context
 
 // declare storenya disii :
@@ -35,7 +36,7 @@ root.render(
         <Routes>
           <Route path="/" element={<App />}>
             <Route path="use-reducer" element={<CounterReducerContainer />} />
-            <Route path="react-redux" element={<CounterReduxContainer />} />
+            <Route path="react-redux" element={<CounterRTKContainer />} />
           </Route>
         </Routes>
       </BrowserRouter>
