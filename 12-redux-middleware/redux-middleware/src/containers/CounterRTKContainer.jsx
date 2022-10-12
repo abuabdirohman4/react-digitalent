@@ -22,7 +22,8 @@ const CounterRTKContainer = () => {
   const user = useSelector(selectUser);
   const counter = useSelector(selectCounter);
 
-  // console.log(user)
+  // karena kita ingin menerima input dari textfield
+  const [userId, setUserId] = useState(0);
 
   const [currAmount, setCurrAmount] = useState(0);
 
@@ -55,10 +56,19 @@ const CounterRTKContainer = () => {
     dispatcher(incrementSpec(+currAmount));
   };
 
+  const textFieldUserIdOnChangeHandler = (e) => {
+    setUserId(e.target.value);
+  };
+
+  const buttonComotDataUserOnClickHanlder = () => {
+    // panggil userAsync
+    dispatcher(userAsync(userId));
+  };
+
   useEffect(
     // fn
     () => {
-      dispatcher(userAsync(2))
+      dispatcher(userAsync(2));
     },
     // depsList
     [dispatcher]
@@ -89,6 +99,24 @@ const CounterRTKContainer = () => {
         <Typography variant="body1" component="div">
           Nama Orang: {user.first_name}
         </Typography>
+
+        <Box sx={{ display: "flex", gap: 2 }}>
+          <TextField
+            type="number"
+            label="User ID"
+            size="small"
+            // defaultValue={0}
+            value={userId}
+            onChange={textFieldUserIdOnChangeHandler}
+          />
+          <Button
+            variant="outlined"
+            color="success"
+            onClick={buttonComotDataUserOnClickHanlder}
+          >
+            COMOT DATA USER
+          </Button>
+        </Box>
 
         <Box sx={{ display: "flex", gap: 2 }}>
           <TextField
