@@ -17,6 +17,8 @@ import {
   userAsync,
 } from "../features/counter/sliceCounter";
 
+import ColorList from "../components/ColorList";
+
 const CounterRTKContainer = () => {
   // Redux Toolkit
   const user = useSelector(selectUser);
@@ -88,18 +90,15 @@ const CounterRTKContainer = () => {
         <Typography variant="body1" component="div">
           React Redux
         </Typography>
-
         <Avatar
           // src="https:placekitten.com/200"
           src={user.avatar}
           alt="Avatar"
           sx={{ width: 64, height: 64 }}
         />
-
         <Typography variant="body1" component="div">
           Nama Orang: {user.first_name}
         </Typography>
-
         <Box sx={{ display: "flex", gap: 2 }}>
           <TextField
             type="number"
@@ -117,7 +116,6 @@ const CounterRTKContainer = () => {
             COMOT DATA USER
           </Button>
         </Box>
-
         <Box sx={{ display: "flex", gap: 2 }}>
           <TextField
             disabled
@@ -127,7 +125,6 @@ const CounterRTKContainer = () => {
             size="small"
           />
         </Box>
-
         <Box sx={{ display: "flex", gap: 2 }}>
           <Button
             variant="outlined"
@@ -151,7 +148,6 @@ const CounterRTKContainer = () => {
             +1
           </Button>
         </Box>
-
         {/* Mari kita tambahkan Bagian baru di sini */}
         <Box sx={{ display: "flex", gap: 2 }}>
           <TextField
@@ -177,6 +173,8 @@ const CounterRTKContainer = () => {
             + Amount
           </Button>
         </Box>
+        halo
+        <ColorList />
       </Box>
     </>
   );
