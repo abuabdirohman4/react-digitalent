@@ -7,3 +7,6 @@
 [submodule "10-redux/react-education-redux"]
 	path = 10-redux/react-education-redux
 	url = git@github.com:abuabdirohman4/react-education-redux.git
+[submodule "12-redux-middleware/react-education-redux-middleware"]
+	path = 12-redux-middleware/react-education-redux-middleware
+	url = git@github.com:abuabdirohman4/react-education-redux-middleware.git
