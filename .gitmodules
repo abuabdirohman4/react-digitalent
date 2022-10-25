@@ -10,3 +10,6 @@
 [submodule "12-redux-middleware/react-education-redux-middleware"]
 	path = 12-redux-middleware/react-education-redux-middleware
 	url = git@github.com:abuabdirohman4/react-education-redux-middleware.git
+[submodule "14-firebase-authentication/react-education-firebase-authentication"]
+	path = 14-firebase-authentication/react-education-firebase-authentication
+	url = git@github.com:abuabdirohman4/react-education-firebase-authentication.git
