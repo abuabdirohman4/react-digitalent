@@ -3,7 +3,19 @@ import { Box, Button, TextField, Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 
-const CounterReduxContainer = () => {
+// import selector
+import { selectUser, selectCounter } from "../features/counter/sliceCounter";
+
+// import actions
+import {
+  increment,
+  decrement,
+  reset,
+  incrementSpec,
+  decrementSpec,
+} from "../features/counter/sliceCounter";
+
+const CounterContainer = () => {
   // Harus memilih si state punya property bernama user & counter
   const user = useSelector((state) => state.user);
   const counter = useSelector((state) => state.counter);
@@ -14,19 +26,25 @@ const CounterReduxContainer = () => {
   const dispatcher = useDispatch();
 
   const buttonDecrementOnClickHandler = () => {
-    dispatcher({
-      type: "decrement",
-    });
+    // dispatcher({
+    //   type: "decrement",
+    // });
+
+    // Redux Toolkit
+    // dispatcher (namaActions())
+    dispatcher(decrement());
   };
   const buttonIncrementOnClickHandler = () => {
-    dispatcher({
-      type: "increment",
-    });
+    // dispatcher({
+    //   type: "increment",
+    // });
+    dispatcher(increment());
   };
   const buttonResetOnClickHandler = () => {
-    dispatcher({
-      type: "reset",
-    });
+    // dispatcher({
+    //   type: "reset",
+    // });
+    dispatcher(reset());
   };
 
   const textFieldAmountOnChangeHandler = (event) => {
@@ -35,18 +53,22 @@ const CounterReduxContainer = () => {
   };
 
   const buttonDecrementByAmountOnClickHandler = () => {
-    dispatcher({
-      type: "decrementSpec",
-      amount: +currAmount,
-      // Konversi to number -> Number() parseInt() or +
-    });
+    // dispatcher({
+    //   type: "decrementSpec",
+    //   amount: +currAmount,
+    //   // Konversi to number -> Number() parseInt() or +
+    // });
+    //
+    // decremetnSpec(action.payload)
+    dispatcher(decrementSpec(+currAmount));
   };
 
   const buttonIncrementByAmountOnClickHandler = () => {
-    dispatcher({
-      type: "incrementSpec",
-      amount: +currAmount,
-    });
+    // dispatcher({
+    //   type: "incrementSpec",
+    //   amount: +currAmount,
+    // });
+    dispatcher(incrementSpec(+currAmount));
   };
 
   return (
@@ -132,4 +154,4 @@ const CounterReduxContainer = () => {
   );
 };
 
-export default CounterReduxContainer;
+export default CounterContainer;
