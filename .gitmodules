@@ -13,3 +13,6 @@
 [submodule "14-firebase-authentication/react-education-firebase-authentication"]
 	path = 14-firebase-authentication/react-education-firebase-authentication
 	url = git@github.com:abuabdirohman4/react-education-firebase-authentication.git
+[submodule "dts4a-05-final"]
+	path = dts4a-05-final
+	url = git@github.com:abuabdirohman4/dts4a-05-final.git
