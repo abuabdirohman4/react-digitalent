@@ -7,7 +7,6 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  sendPasswordResetEmail,
   signOut,
 } from "firebase/auth";
 
@@ -46,7 +45,7 @@ const registrasiEmailDanPassword = async (email, kataSandi) => {
   }
 };
 
-const signInWithEmailAndPassword = async (email, kataSandi) => {
+const signInDenganEmailDanPassword = async (email, kataSandi) => {
   try {
     const userCredential = await signInWithEmailAndPassword(
       auth,
@@ -72,6 +71,6 @@ const keluarDariAplikasiKita = async () => {
 export {
   auth,
   registrasiEmailDanPassword,
-  signInWithEmailAndPassword,
+  signInDenganEmailDanPassword,
   keluarDariAplikasiKita,
 };

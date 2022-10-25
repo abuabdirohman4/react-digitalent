@@ -1,5 +1,5 @@
 // Membutuhkan state untuk meng-track value dari TextField
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 // Gunakan .module.css untuk mendapatkan scoped css
 import styles from "./LoginOrRegisterForm.module.css";
@@ -10,6 +10,13 @@ import { Link } from "react-router-dom";
 // Karena nantinya kita bisa berpindah ke halaman LoginPage (setelah Register)
 // ataupun ke halaman HomePage (setelah Login), maka kita bisa memanfaatkan useNavigate
 import { useNavigate } from "react-router-dom";
+import {
+  auth,
+  registrasiEmailDanPassword,
+  signInDenganEmailDanPassword,
+} from "../auhentication/firebase";
+
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const LoginOrRegisterForm = ({ loginOrRegister }) => {
   // gunakan hooks useNavigate
@@ -19,6 +26,11 @@ const LoginOrRegisterForm = ({ loginOrRegister }) => {
     email: "",
     password: "",
   });
+
+  // user = auth.user apabila ada yang login, kalau tidak ada yang login NULL
+  // isLoading = boolean, apakah si firebase lagi nunggu login
+  // error = error string yang diberikan
+  const [user, isLoading, error] = useAuthState(auth);
 
   const textFieldEmailOnChangeHandler = (event) => {
     // Karena state berupa Object
@@ -40,13 +52,15 @@ const LoginOrRegisterForm = ({ loginOrRegister }) => {
   };
 
   const loginHandler = () => {
-    console.log("Login");
-    navigate("/");
+    // console.log("Login");
+    // navigate("/");
+    signInDenganEmailDanPassword(credential.email, credential.password);
   };
 
   const registerHandler = () => {
-    console.log("Register");
-    navigate("/login");
+    // console.log("Register");
+    // navigate("/login");
+    registrasiEmailDanPassword(credential.email, credential.password);
   };
 
   const buttonLoginOrRegisterOnClickHandler = () => {
@@ -56,6 +70,18 @@ const LoginOrRegisterForm = ({ loginOrRegister }) => {
       registerHandler();
     }
   };
+
+  useEffect(() => {
+    if (isLoading) {
+      return;
+    }
+
+    if (user) {
+      navigate("/");
+    } else {
+      console.log(error);
+    }
+  }, [user, isLoading, error, navigate]);
 
   return (
     <Grid

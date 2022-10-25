@@ -7,12 +7,14 @@ import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 import styles from "./NavBar.module.css";
+import { keluarDariAplikasiKita } from "../auhentication/firebase";
 
 const NavBar = () => {
   // Gunakan hooks useNavigate
   const navigate = useNavigate();
 
   const buttonLogoutOnClickHandler = () => {
+    keluarDariAplikasiKita();
     navigate("/login");
   };
 
