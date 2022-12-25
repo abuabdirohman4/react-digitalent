@@ -10,3 +10,6 @@
 [submodule "dts4a-05-final"]
 	path = dts4a-05-final
 	url = git@github.com:abuabdirohman4/dts4a-05-final.git
+[submodule "11-redux/react-education-redux"]
+	path = 11-redux/react-education-redux
+	url = git@github.com:abuabdirohman4/react-education-redux.git
