@@ -1,9 +1,6 @@
 [submodule "06-ui-framework/react-education-ui-framework"]
 	path = 06-ui-framework/react-education-ui-framework
 	url = git@github.com:abuabdirohman4/react-education-ui-framework.git
-[submodule "11-redux/react-education-redux"]
-	path = 11-redux/react-education-redux
-	url = git@github.com:abuabdirohman4/react-education-redux.git
 [submodule "12-redux-middleware/react-education-redux-middleware"]
 	path = 12-redux-middleware/react-education-redux-middleware
 	url = git@github.com:abuabdirohman4/react-education-redux-middleware.git
